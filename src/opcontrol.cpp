@@ -1,5 +1,6 @@
 #include "pros/main.h"
 #include "globals.hpp"
+#include "globals.cpp"
 
 void intake_conveyor(int ct_v, int cb_v, int int_vel){
     conveyor_move(ct_v, cb_v);
@@ -56,6 +57,5 @@ void control_func(){
 void opcontrol(){
     pros::Task drive_task {driving_func};
     pros::Task control_task {control_func};
-    
+
 }
- 
