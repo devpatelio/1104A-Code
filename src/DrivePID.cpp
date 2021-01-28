@@ -58,7 +58,7 @@ void setDriverPID(int target, int AngleTarget){
   //use this function to activate the PID in autonomous
 }
 void waitUntilSettled(int positionError, int velocityError){
-  while(!isDriverSettled(positionError,velocityError)= false){
+  while(!isDriverSettled(positionError,velocityError)== false){
     pros::delay(10);
 //current problem
 

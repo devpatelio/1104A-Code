@@ -1,6 +1,8 @@
 #include "pros/main.h"
 #include "globals.hpp"
 #include "globals.cpp"
+#include  "DrivePID.hpp"
+#include "TurnPID.hpp"
 
 void intake_conveyor(int ct_v, int cb_v, int int_vel){
     conveyor_move(ct_v, cb_v);
@@ -26,10 +28,15 @@ void driving_func()
         pros::delay(10);
     };
 }
-
+void AutoSetup(){
+  while(pros::competition::is_autonomous() || pros::competition::is_connected()){
+    setDriverPID(10, 2);
+    setTurnPID(10);
+  }
+}
 void control_func(){
 
-    while (!(pros::competition::is_autonomous || pros::competition::is_disabled())){
+    while (!(pros::competition::is_autonomous()|| pros::competition::is_disabled())){
 
         if (main_controller.get_digital(DIGITAL_R1))        // index
             intake_conveyor(600, 0, 0);
@@ -57,5 +64,6 @@ void control_func(){
 void opcontrol(){
     pros::Task drive_task {driving_func};
     pros::Task control_task {control_func};
+    pros::Task auto_task{AutoSetup};
 
 }
