@@ -56,7 +56,7 @@ void setTurnPID(int target){
   TurningPositionTarget=target;
 }
 void waitUntilSettled(int positionError, int velocityError){
-  while(isTurnSettled(positionError,velocityError)= false){
+  while(isTurnSettled(positionError,velocityError)== false){
     pros::delay(10);
 //problem I don't understand
   }
